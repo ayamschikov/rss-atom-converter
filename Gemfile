@@ -9,5 +9,5 @@ gem 'rubocop', require: false
 gem 'rack'
 gem 'test-unit'
 gem 'rack-test'
-gem 'optparse'
+gem 'rubysl-optparse', '~> 2.0', '>= 2.0.1'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
