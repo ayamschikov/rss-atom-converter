@@ -1,8 +1,5 @@
-#! /usr/bin/env ruby
-
 require 'open-uri'
 require 'rss'
-require_relative './command_parser.rb'
 
 class Converter
   attr_reader :result
@@ -48,11 +45,3 @@ class Converter
     #result = RSS::Maker.make(options[:output]) { |maker| rss}
   end
 end
-
-
-cParser = CommandParser.new
-file, options = cParser.parse
-converter = Converter.new(file, options)
-rss = converter.convert
-
-STDOUT.puts(rss)
