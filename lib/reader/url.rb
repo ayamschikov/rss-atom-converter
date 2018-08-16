@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Url
-  def read(file)
-    open(file)
+  def read(url)
+    open(url)
   end
 end
