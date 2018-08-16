@@ -1,20 +1,13 @@
-require 'rss'
+require 'nokogiri'
 
 class Parser
-  def initialize(data)
-
+  def initialize(data, options)
+    @data = data
+    @options = options
+    self.parse_to_hash
   end
   
-  # TODO: add atom support
-  def reverse
-    if @options['reverse']
-      @rss.channel.items.reverse!
-    end
-  end
-
-  def sort
-    if @options['sort']
-      @rss.channel.items.sort! {|a, b| a.pubDate <=> b.pubDate}
-    end
+  def parse_to_hash
+    Nokogiri::XML(@data)
   end
 end
