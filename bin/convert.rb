@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
-require_relative './command_parser.rb'
-require_relative './converter.rb'
+require 'require_all'
+require_all 'lib'
 
 cParser = CommandParser.new
 file, options = cParser.parse
