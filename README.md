@@ -6,7 +6,7 @@
 docker-compose up --build
 docker-compose run web bash
 bundle install
-ruby converter.rb -h
+ruby bin/converter.rb -h
 ```
 
 ## Запуск тестов
