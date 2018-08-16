@@ -3,7 +3,14 @@
 ## Запуск проекта
 
 ```
+docker-compose up --build
+docker-compose run web bash
 bundle install
+ruby converter.rb -h
+```
+
+## Запуск тестов
+```
 bundle exec rake test
 bundle exec rubocop
 ```
