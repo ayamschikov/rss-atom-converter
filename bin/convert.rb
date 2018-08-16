@@ -5,7 +5,8 @@ require_all 'lib'
 
 cParser = CommandParser.new
 file, options = cParser.parse
-converter = Converter.new(file, options)
-rss = converter.convert
+data = Reader.new(file)
+hash = Parser.new(data, options)
+result = Converter.new(hash, options)
 
-STDOUT.puts(rss)
+STDOUT.puts(result)
