@@ -4,6 +4,7 @@ require 'require_all'
 require 'optparse'
 require_rel'../lib'
 
+options = {}
 OptionParser.new do |parser|
   parser.banner = "Usage: converter.rb [options] FILE"
 
