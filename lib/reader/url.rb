@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Url
-  def read(url)
+  def self.read(url)
     open(url)
   end
 end
