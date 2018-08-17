@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 
 require 'require_all'
-require_all 'lib'
+require_rel'../lib'
 
 cParser = CommandParser.new
 file, options = cParser.parse
