@@ -1,6 +1,6 @@
 class Reader
   def initialize(file)
     @file = file
-    @data =~ /http/ ? Url.read(@file) : File.read(@file)
+    @data = @file =~ /http/ ? Url.read(@file) : FileReader.read(@file)
   end
 end
