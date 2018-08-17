@@ -5,8 +5,8 @@ class App
   end
 
   def run
-    data = Reader.new(@file)
-    hash = Parser.new(data, @options)
+    data = Reader.new(@file).data
+    hash = Parser.new(data, @options).hash
     result = Converter.new(hash, @options)
 
     STDOUT.puts(result)
