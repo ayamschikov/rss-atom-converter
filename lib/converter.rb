@@ -16,10 +16,18 @@ class Converter
 
   # TODO: change reverse and sort methods according to hash structure
   def reverse
-      @data.items.to_a.each {|item| puts item.css('title content') }
+    if @data.feed_type == 'rss'
+      @data.items.reverse!
+    else
+      @data.entries.reverse!
+    end
   end
 
   def sort
+    if @data.feed_type == 'rss'
       @data.items.sort! {|a, b| a.pubDate <=> b.pubDate}
+    else
+      @data.entries.sort! {|a, b| a.published.content <=> b.published.content}
+    end
   end
 end
