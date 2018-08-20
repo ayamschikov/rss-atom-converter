@@ -1,4 +1,4 @@
-require 'nokogiri'
+require 'rss'
 
 class Parser
   def initialize(output)
@@ -7,7 +7,7 @@ class Parser
   
   # TODO: parse to hash
   def parse_to_hash(data)
-    Nokogiri::XML(data)
+    RSS::Parser.parse(data)
   end
 
   # TODO: add method to make rss/atom from hash
