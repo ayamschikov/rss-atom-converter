@@ -1,20 +1,20 @@
 class App
-  def initialize(file, options)
-    @file = file
+  def initialize(options)
     @options = options
   end
 
-  def run
+  def run(source)
     reader = Reader.new
-    data = reader.read(@file)
+    data = reader.read(source)
 
-    parser = Parser.new(@options['output'])
-    hash = parser.parse_to_hash(data)
+    parser = Parser.new(output_format: @options['output_format'])
+    # TODO: rename hash to more meaningful name
+    hash = parser.to_hash(data)
 
-    converter = Converter.new(@options)
+    converter = Converter.new(sort: @options['sort'], reverse: @options['reverse'])
     result = converter.convert(hash)
 
-    xml = parser.hash_to_xml(result)
+    xml = parser.to_xml(result)
 
     STDOUT.puts(xml)
   end

@@ -13,11 +13,12 @@ OptionParser.new do |parser|
     exit
   end
 
-  parser.on("-o", "--out TYPE", "Output type [rss | atom]") do |v|
-    if v == 'atom'
-      options['output'] = v
+  parser.on("-o", "--out TYPE", "Output type [rss | atom]") do |format|
+    if format == 'atom' || format == 'rss'
+      options['output_format'] = format
     else
-      options['output'] = 'rss'
+      puts "No such format: #{format}"
+      exit
     end
   end
 
@@ -31,7 +32,7 @@ OptionParser.new do |parser|
 
 end.parse!
 
-file = ARGV[0]
+source = ARGV[0]
  
-app = App.new(file, options)
-app.run
+app = App.new(options)
+app.run(source)

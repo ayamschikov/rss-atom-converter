@@ -1,14 +1,15 @@
 class Converter
   def initialize(options)
-    @options = options
+    @sort = options[:sort]
+    @reverse = options[:reverse]
   end
 
   def convert(data)
     @data = data
-    if @options['sort']
+    if @sort
       self.sort
     end
-    if @options['reverse']
+    if @reverse
       self.reverse
     end
     @data

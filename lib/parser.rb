@@ -1,18 +1,18 @@
 require 'rss'
 
 class Parser
-  def initialize(output)
-    @output = output
+  def initialize(options = {})
+    @output_format = options[:output_format]
   end
   
   # TODO: parse to hash
-  def parse_to_hash(data)
+  def to_hash(data)
     RSS::Parser.parse(data)
   end
 
   # TODO: add method to make rss/atom from hash
-  def hash_to_xml(hash)
-    if @output == 'rss'
+  def to_xml(hash)
+    if @output_format == 'rss'
       @result = RSS::Maker.make("2.0") do |maker|
         #  Required
         #  Check for existing these fields
