@@ -5,10 +5,17 @@ class App
   end
 
   def run
-    data = Reader.new(@file).data
-    hash = Parser.new(data, @options).hash
-    result = Converter.new(hash, @options)
+    reader = Reader.new
+    data = reader.read(@file)
 
-    STDOUT.puts(result)
+    parser = Parser.new(@options['output'])
+    hash = parser.parse_to_hash(data)
+
+    converter = Converter.new(@options)
+    result = converter.convert(hash)
+
+    xml = parser.hash_to_xml(result)
+
+    STDOUT.puts(xml)
   end
 end

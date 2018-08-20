@@ -1,14 +1,19 @@
 require 'nokogiri'
 
 class Parser
-  attr_reader :hash
-  def initialize(data, options)
-    @data = data
-    @options = options
-    @hash = self.parse_to_hash
+  def initialize(output)
+    @output = output
   end
   
-  def parse_to_hash
-    Nokogiri::XML(@data)
+  # TODO: parse to hash
+  def parse_to_hash(data)
+    Nokogiri::XML(data)
+  end
+
+  # TODO: add method to make rss/atom from hash
+  def hash_to_xml(hash)
+    if @output == 'rss'
+    else
+    end
   end
 end

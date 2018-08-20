@@ -1,21 +1,25 @@
 class Converter
-  def initialize(hash, options)
-    @data = hash
+  def initialize(options)
     @options = options
-    self.sort
-    self.reverse
-    return @data
   end
 
-  def reverse
-    if @options['reverse']
-      @data.items.reverse!
+  def convert(data)
+    @data = data
+    if @options['sort']
+      self.sort
     end
+    if @options['reverse']
+      self.reverse
+    end
+    @data
+  end
+
+  # TODO: change reverse and sort methods according to hash structure
+  def reverse
+      @data.items.to_a.each {|item| puts item.css('title content') }
   end
 
   def sort
-    if @options['sort']
       @data.items.sort! {|a, b| a.pubDate <=> b.pubDate}
-    end
   end
 end
