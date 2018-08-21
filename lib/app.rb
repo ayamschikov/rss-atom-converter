@@ -7,13 +7,13 @@ class App
     reader = Reader.new
     data = reader.read(source)
 
-    parser = Parser.new(output_format: @options['output_format'])
-    parsed_data = parser.to_hash(data)
+    parsed_data = Parser.to_hash(data)
 
     handler = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
     processed_data = handler.process(parsed_data)
 
-    xml = parser.to_xml(processed_data)
+    converter = Converter.new(output_format: @options['output_format'])
+    xml = converter.to_xml(processed_data)
 
     STDOUT.puts(xml)
   end
