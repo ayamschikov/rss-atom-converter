@@ -4,8 +4,9 @@ class App
   end
 
   def run(source)
-    reader = Reader.new
-    data = reader.read(source)
+    reader = Reader.new(readers: [UrlReader])
+    reader_class = reader.get_class(source)
+    data = reader_class.read(source)
 
     parsed_data = Parser.to_hash(data)
 

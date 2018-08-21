@@ -1,7 +1,14 @@
 class Reader
-  attr_reader :data
+  def initialize(options = {})
+    @readers = [FileReader]
+    @readers += options[:readers] if options[:readers]
+  end
 
-  def read(source)
-    @data = source =~ /http/ ? Url.read(source) : FileReader.read(source)
+  def get_class(source)
+    @readers.each do |reader|
+      return reader if reader.can_work?(source)
+    end
+    puts 'unsopperted source'
+    exit
   end
 end
