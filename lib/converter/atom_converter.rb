@@ -3,7 +3,7 @@ class AtomConverter
     id: 'id',
     author: 'default_author'
   }
-  def self.to_atom(hash)
+  def self.to_xml(hash)
       @result = RSS::Maker.make("atom") do |maker|
         # Required
         maker.channel.updated = Time.now

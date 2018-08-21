@@ -11,6 +11,6 @@ class Parser
   end
 
   def to_xml(hash)
-    @output_format == 'rss' ? RssConverter.to_rss(hash) : AtomConverter.to_atom(hash)
+    @output_format == 'rss' ? RssConverter.to_xml(hash) : AtomConverter.to_xml(hash)
   end
 end

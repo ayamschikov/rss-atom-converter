@@ -5,7 +5,7 @@ class RssConverter
     version: '2.0'
   }
 
-  def self.to_rss(hash)
+  def self.to_xml(hash)
       @result = RSS::Maker.make(@@default_fields[:version]) do |maker|
         #  Required
         maker.channel.title = hash[:title]
