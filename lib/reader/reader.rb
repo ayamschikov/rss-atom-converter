@@ -1,6 +1,8 @@
 class Reader
+  READERS_ARRAY = [FileReader] 
+  
   def initialize(options = {})
-    @readers = [FileReader]
+    @readers = READERS_ARRAY
     @readers += options[:readers] if options[:readers]
   end
 
