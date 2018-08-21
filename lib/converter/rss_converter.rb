@@ -1,11 +1,12 @@
 class RssConverter
   @@default_fields = {
     description: 'default_description',
-    link: 'default_link'
+    link: 'default_link',
+    version: '2.0'
   }
 
   def self.to_rss(hash)
-      @result = RSS::Maker.make("2.0") do |maker|
+      @result = RSS::Maker.make(@@default_fields[:version]) do |maker|
         #  Required
         maker.channel.title = hash[:title]
         maker.channel.link = @@default_fields[:link]

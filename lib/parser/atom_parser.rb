@@ -1,6 +1,6 @@
 class AtomParser
   def self.to_hash(source)
-    hash = {
+    atom_hash = {
       title: source.title.content,
       id: source.id.content,
       updated: source.updated.content,
@@ -9,7 +9,7 @@ class AtomParser
     }
 
     source.entries.each do |entry|
-      hash[:items].push(
+      atom_hash[:items].push(
         title: entry.title.content,
         updated: entry.updated.content,
         published: entry.published.content,
@@ -17,6 +17,6 @@ class AtomParser
         link: entry.link.href
       )
     end
-    hash
+    atom_hash
   end
 end

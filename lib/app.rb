@@ -11,9 +11,9 @@ class App
     parsed_data = parser.to_hash(data)
 
     converter = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
-    result = converter.process(parsed_data)
+    processed_data = converter.process(parsed_data)
 
-    xml = parser.to_xml(result)
+    xml = parser.to_xml(processed_data)
 
     STDOUT.puts(xml)
   end

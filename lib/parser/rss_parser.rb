@@ -1,6 +1,6 @@
 class RssParser
   def self.to_hash(source)
-    hash = {
+    rss_hash = {
       title: source.channel.title,
       description: source.channel.description,
       link: source.channel.link,
@@ -8,13 +8,13 @@ class RssParser
     }
 
     source.channel.items.each do |item|
-      hash[:items].push(
+      rss_hash[:items].push(
         title: item.title,
         published: item.pubDate,
         description: item.description,
         link: item.link
       )
     end
-    hash
+    rss_hash
   end
 end
