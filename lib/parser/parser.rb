@@ -7,7 +7,8 @@ class Parser
   
   # TODO: parse to hash
   def to_hash(data)
-    RSS::Parser.parse(data)
+    xml = RSS::Parser.parse(data)
+    puts xml.feed_type == 'rss' ? RssParser.to_hash(xml) : AtomParser.to_hash(xml)
   end
 
   # TODO: add method to make rss/atom from hash
