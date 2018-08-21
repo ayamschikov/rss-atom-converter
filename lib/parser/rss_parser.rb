@@ -11,8 +11,8 @@ class RssParser
       hash[:items].push(
         title: item.title,
         published: item.pubDate,
-        description: 'default desc',
-        link: 'default link'
+        description: item.description,
+        link: item.link
       )
     end
     hash

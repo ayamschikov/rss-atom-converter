@@ -4,6 +4,7 @@ class AtomParser
       title: source.title.content,
       id: source.id.content,
       updated: source.updated.content,
+      author: source.author.name.content,
       items: []
     }
 
@@ -12,7 +13,8 @@ class AtomParser
         title: entry.title.content,
         updated: entry.updated.content,
         published: entry.published.content,
-        id: entry.id.content
+        id: entry.id.content,
+        link: entry.link.href
       )
     end
     hash
