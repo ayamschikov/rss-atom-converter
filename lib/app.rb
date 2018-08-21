@@ -8,11 +8,10 @@ class App
     data = reader.read(source)
 
     parser = Parser.new(output_format: @options['output_format'])
-    # TODO: rename hash to more meaningful name
-    hash = parser.to_hash(data)
+    parsed_data = parser.to_hash(data)
 
     converter = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
-    result = converter.convert(hash)
+    result = converter.process(parsed_data)
 
     xml = parser.to_xml(result)
 
