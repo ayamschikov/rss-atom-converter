@@ -11,7 +11,7 @@ class App
     # TODO: rename hash to more meaningful name
     hash = parser.to_hash(data)
 
-    converter = Converter.new(sort: @options['sort'], reverse: @options['reverse'])
+    converter = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
     result = converter.convert(hash)
 
     xml = parser.to_xml(result)
