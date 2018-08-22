@@ -1,4 +1,4 @@
-module Parser
+module ParseHelper
   require 'rss'
 
   def self.parse(data)

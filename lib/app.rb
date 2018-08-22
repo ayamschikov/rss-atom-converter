@@ -11,7 +11,7 @@ class App
     reader_class = reader_factory(source)
     data = reader_class.read(source)
 
-    parsed_data = Parser::parse(data)
+    parsed_data = ParseHelper.parse(data)
 
     handler = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
     processed_data = handler.process(parsed_data)
