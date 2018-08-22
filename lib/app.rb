@@ -1,6 +1,6 @@
 require_rel 'reader'
 class App
-  READERS_ARRAY = [Readers::FileReader] 
+  READERS_ARRAY = [Readers::FileReader].freeze
 
   def initialize(options)
     @options = options
