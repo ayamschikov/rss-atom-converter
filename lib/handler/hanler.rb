@@ -1,25 +1,15 @@
-class Handler
-  def initialize(options)
-    @sort = options[:sort]
-    @reverse = options[:reverse]
+class HandlerHelper
+  def initialize(options = {sort: ['title', 'published'], reverse: true})
+    @options = options
   end
 
   def process(data)
     @data = data
-    if @sort
-      sort
-    end
-    if @reverse
-      reverse
+    @options.each do |option|
+      # TODO: fix option drop
+      handler = Object.const_get("#{option.first.capitalize}Handler").new(option.drop(1))
+      @data[:items] = handler.process(@data[:items])
     end
     @data
-  end
-
-  def reverse
-    @data[:items].reverse!
-  end
-
-  def sort
-    @data[:items].sort! {|a, b| a[:published] <=> b[:published]}
   end
 end

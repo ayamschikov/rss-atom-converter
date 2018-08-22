@@ -13,7 +13,7 @@ class App
 
     parsed_data = ParseHelper.parse(data)
 
-    handler = Handler.new(sort: @options['sort'], reverse: @options['reverse'])
+    handler = HandlerHelper.new(sort: @options['sort'], reverse: @options['reverse'])
     processed_data = handler.process(parsed_data)
 
     converter = Converter.new(output_format: @options['output_format'])
