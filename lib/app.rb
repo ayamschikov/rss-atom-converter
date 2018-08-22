@@ -5,7 +5,6 @@ class App
   def initialize(options)
     @options = options
     @readers = READERS_ARRAY + (options['readers'] || [])
-    puts @readers
   end
 
   def run(source)
@@ -24,6 +23,6 @@ class App
   end
 
   def reader_factory(source)
-    @readers.find(exit) {|reader| puts reader.can_work?(source)}
+    @readers.find {|reader| reader.can_work?(source)}
   end
 end
