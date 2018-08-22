@@ -1,11 +1,15 @@
+require_rel 'reader'
 class App
+  READERS_ARRAY = [Readers::FileReader] 
+
   def initialize(options)
     @options = options
+    @readers = READERS_ARRAY + (options['readers'] || [])
+    puts @readers
   end
 
   def run(source)
-    reader = Reader.new(readers: [UrlReader])
-    reader_class = reader.get_class(source)
+    reader_class = reader_factory(source)
     data = reader_class.read(source)
 
     parsed_data = Parser.to_hash(data)
@@ -17,5 +21,9 @@ class App
     xml = converter.to_xml(processed_data)
 
     STDOUT.puts(xml)
+  end
+
+  def reader_factory(source)
+    @readers.find(exit) {|reader| puts reader.can_work?(source)}
   end
 end

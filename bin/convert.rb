@@ -2,7 +2,7 @@
 
 require 'require_all'
 require 'optparse'
-require_rel'../lib'
+require_rel '../lib'
 
 options = {}
 OptionParser.new do |parser|
@@ -33,6 +33,7 @@ OptionParser.new do |parser|
 end.parse!
 
 source = ARGV[0]
+options['readers'] = [Readers::UrlReader] 
  
 app = App.new(options)
 app.run(source)
