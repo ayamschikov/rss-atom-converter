@@ -1,7 +1,7 @@
 module Readers
   require 'open-uri'
 
-  class UrlReader
+  module UrlReader
     def self.can_work?(source)
       source =~ /http/
     end

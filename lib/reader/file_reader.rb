@@ -1,5 +1,5 @@
 module Readers
-  class FileReader
+  module FileReader
     def self.can_work?(source)
       File.exist?(source)
     end
