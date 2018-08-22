@@ -1,9 +1,9 @@
-require 'rss'
+module Parser
+  require 'rss'
 
-class Parser
-  def self.to_hash(data)
+  def self.parse(data)
     xml = RSS::Parser.parse(data)
-    xml.feed_type == 'rss' ? RssParser.to_hash(xml) : AtomParser.to_hash(xml)
+    parser_object = Object.const_get("Parser::#{xml.feed_type.downcase.capitalize}Parser")
+    parser_object.parse(xml)
   end
-
 end
