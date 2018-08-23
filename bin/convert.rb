@@ -7,6 +7,7 @@ require_rel '../lib'
 options = {}
 OptionParser.new do |parser|
   parser.banner = "Usage: converter.rb [options] FILE"
+  options['sort'] = []
 
   parser.on("-h", "--help", "Show this help message") do ||
     puts parser
@@ -26,8 +27,12 @@ OptionParser.new do |parser|
     options['reverse'] = true
   end
 
+  parser.on("-n", "--sort", "Sort by name") do ||
+    options['sort'] << 'title'
+  end
+
   parser.on("-s", "--sort", "Sort by publishing date") do ||
-    options['sort'] = true
+    options['sort'] << 'published'
   end
 
 end.parse!
