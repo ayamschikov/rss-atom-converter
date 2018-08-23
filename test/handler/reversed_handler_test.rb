@@ -5,7 +5,6 @@ require_rel '../../lib'
 
 class ReverseHandlerTest < Minitest::Test
   def test_reverse
-
     source = ParseHelper.parse(File.read('test/fixtures/hexlet.rss'))
     reversed_file = ParseHelper.parse(File.read('test/fixtures/reversed_hexlet.rss'))
 
