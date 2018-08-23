@@ -1,0 +1,1 @@
+{:title=>"Example Feed", :id=>"urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6", :updated=>2003-12-13 18:30:02 UTC, :author=>"John Doe", :items=>[{:title=>"1", :updated=>2003-12-13 18:31:02 UTC, :published=>2003-12-13 18:31:02 UTC, :id=>"1", :link=>"1111"}, {:title=>"2", :updated=>2003-12-13 18:32:02 UTC, :published=>2003-12-13 18:32:02 UTC, :id=>"2", :link=>"2222"}]}
