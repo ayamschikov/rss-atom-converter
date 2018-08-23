@@ -3,7 +3,7 @@ module Converter
     DEFAULT_FIELDS = {
       id: 'id',
       author: 'default_author'
-    }
+    }.freeze
 
     def self.can_convert?(output_format)
       output_format == 'atom'

@@ -4,7 +4,7 @@ module Converter
       description: 'default_description',
       link: 'default_link',
       version: '2.0'
-    }
+    }.freeze
 
     def self.can_convert?(output_format)
       output_format == 'rss'
