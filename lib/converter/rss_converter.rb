@@ -1,16 +1,17 @@
-class RssConverter
-  @@default_fields = {
-    description: 'default_description',
-    link: 'default_link',
-    version: '2.0'
-  }
+module Converter
+  class RssConverter
+    @default_fields = {
+      description: 'default_description',
+      link: 'default_link',
+      version: '2.0'
+    }
 
-  def self.to_xml(hash)
-      @result = RSS::Maker.make(@@default_fields[:version]) do |maker|
+    def self.convert(hash)
+      @result = RSS::Maker.make(@default_fields[:version]) do |maker|
         #  Required
         maker.channel.title = hash[:title]
-        maker.channel.link = @@default_fields[:link]
-        maker.channel.description = @@default_fields[:description]
+        maker.channel.link = @default_fields[:link]
+        maker.channel.description = @default_fields[:description]
 
         hash[:items].each do |entry|
           maker.items.new_item do |item|
@@ -20,5 +21,6 @@ class RssConverter
           end
         end
       end
+    end
   end
 end
