@@ -27,6 +27,7 @@ class App
   end
 
   def converter_factory(output_format, source)
-    Object.const_get("Converter::#{output_format.capitalize}Converter")
+    converter_class = Converter.constants.find { |converter| Converter.const_get(converter).can_convert?(output_format) }
+    Converter.const_get(converter_class)
   end
 end

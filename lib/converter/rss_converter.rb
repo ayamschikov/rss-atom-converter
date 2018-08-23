@@ -8,6 +8,10 @@ module Converter
       }.merge(default_fields)
     end
 
+    def self.can_convert?(output_format)
+      "#{output_format.capitalize}Converter" == 'RssConverter' 
+    end
+
     def convert(hash)
       result = RSS::Maker.make(@default_fields[:version]) do |maker|
         #  Required

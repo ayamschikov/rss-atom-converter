@@ -7,6 +7,10 @@ module Converter
       }.merge(default_fields)
     end
 
+    def self.can_convert?(output_format)
+      "#{output_format.capitalize}Converter" == 'AtomConverter' 
+    end
+
     def convert(hash)
       result = RSS::Maker.make("atom") do |maker|
         # Required
