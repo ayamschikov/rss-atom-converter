@@ -4,6 +4,6 @@ class ReverseHandler
   end
 
   def process(source)
-    source.reverse!
+    source.reverse
   end
 end
