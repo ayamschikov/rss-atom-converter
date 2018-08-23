@@ -10,5 +10,4 @@ class RssParserTest < Minitest::Test
 
     assert rss_parsed_file == source.to_s
   end
-
 end

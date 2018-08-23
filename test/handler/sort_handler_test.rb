@@ -22,8 +22,7 @@ class SortHandlerTest < Minitest::Test
     sort_handler = SortHandler.new(['link'])
     accepted = source.dup
     accepted[:items] = sort_handler.process(source[:items])
-    
+
     assert sorted_file == accepted
   end
 end
-

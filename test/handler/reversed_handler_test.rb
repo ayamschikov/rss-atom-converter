@@ -15,4 +15,3 @@ class ReverseHandlerTest < Minitest::Test
     assert reversed_file == accepted
   end
 end
-
