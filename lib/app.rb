@@ -17,9 +17,9 @@ class App
     processed_data = handler.process(parsed_data)
 
     converter = converter_factory(@options['output_format'], processed_data).new(id: '333333', link: 'new_link')
-    xml = converter.convert(processed_data)
+    result = converter.convert(processed_data)
 
-    STDOUT.puts(xml)
+    STDOUT.puts(result)
   end
 
   def reader_factory(source)
