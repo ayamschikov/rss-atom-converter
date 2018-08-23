@@ -1,14 +1,14 @@
 module Converter
   class AtomConverter
-    def initialize(default_fields)
+    def initialize(default_fields = {})
       @default_fields = {
         id: 'id',
         author: 'default_author'
-      }
+      }.merge(default_fields)
     end
 
     def convert(hash)
-      @result = RSS::Maker.make("atom") do |maker|
+      result = RSS::Maker.make("atom") do |maker|
         # Required
         maker.channel.updated = Time.now
         maker.channel.title = hash[:title]
@@ -23,6 +23,7 @@ module Converter
           end
         end
       end
+      result
     end
   end
 end

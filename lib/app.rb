@@ -16,7 +16,8 @@ class App
     handler = HandlerHelper.new({sort: @options['sort'], reverse: @options['reverse']}.compact)
     processed_data = handler.process(parsed_data)
 
-    xml = converter_factory(@options['output_format'], processed_data)
+    converter = converter_factory(@options['output_format'], processed_data).new(id: '333333', link: 'new_link')
+    xml = converter.convert(processed_data)
 
     STDOUT.puts(xml)
   end
@@ -26,6 +27,6 @@ class App
   end
 
   def converter_factory(output_format, source)
-    Object.const_get("Converter::#{output_format.capitalize}Converter").convert(source)
+    Object.const_get("Converter::#{output_format.capitalize}Converter")
   end
 end
