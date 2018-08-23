@@ -16,7 +16,7 @@ class App
     handler = HandlerHelper.new({ sort: @options['sort'], reverse: @options['reverse'] }.compact)
     processed_data = handler.process(parsed_data)
 
-    converter = converter_factory(@options['output_format'], processed_data).new(id: '333333', link: 'new_link')
+    converter = converter_factory(@options['output_format'])
     result = converter.convert(processed_data)
 
     STDOUT.puts(result)
@@ -28,6 +28,6 @@ class App
 
   def converter_factory(output_format)
     converter_class = Converter.constants.find { |converter| Converter.const_get(converter).can_convert?(output_format) }
-    Converter.const_get(converter_class)
+    Converter.const_get(converter_class).new
   end
 end

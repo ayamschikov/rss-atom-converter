@@ -1,23 +1,21 @@
 module Converter
   class RssConverter
-    def initialize(default_fields = {})
-      @default_fields = {
-        description: 'default_description',
-        link: 'default_link',
-        version: '2.0'
-      }.merge(default_fields)
-    end
+    DEFAULT_FIELDS = {
+      description: 'default_description',
+      link: 'default_link',
+      version: '2.0'
+    }
 
     def self.can_convert?(output_format)
-      "#{output_format.capitalize}Converter" == 'RssConverter'
+      output_format == 'rss'
     end
 
     def convert(hash)
-      result = RSS::Maker.make(@default_fields[:version]) do |maker|
+      result = RSS::Maker.make(DEFAULT_FIELDS[:version]) do |maker|
         #  Required
         maker.channel.title = hash[:title]
-        maker.channel.link = @default_fields[:link]
-        maker.channel.description = @default_fields[:description]
+        maker.channel.link = DEFAULT_FIELDS[:link]
+        maker.channel.description = DEFAULT_FIELDS[:description]
 
         hash[:items].each do |entry|
           maker.items.new_item do |item|
