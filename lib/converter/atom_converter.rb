@@ -1,10 +1,13 @@
 module Converter
   class AtomConverter
-    @default_fields = {
-      id: 'id',
-      author: 'default_author'
-    }
-    def self.convert(hash)
+    def initialize(default_fields)
+      @default_fields = {
+        id: 'id',
+        author: 'default_author'
+      }
+    end
+
+    def convert(hash)
       @result = RSS::Maker.make("atom") do |maker|
         # Required
         maker.channel.updated = Time.now
