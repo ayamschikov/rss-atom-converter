@@ -8,11 +8,11 @@ module Converter
     end
 
     def self.can_convert?(output_format)
-      "#{output_format.capitalize}Converter" == 'AtomConverter' 
+      "#{output_format.capitalize}Converter" == 'AtomConverter'
     end
 
     def convert(hash)
-      result = RSS::Maker.make("atom") do |maker|
+      result = RSS::Maker.make('atom') do |maker|
         # Required
         maker.channel.updated = Time.now
         maker.channel.title = hash[:title]

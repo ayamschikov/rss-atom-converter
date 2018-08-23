@@ -13,7 +13,7 @@ class App
 
     parsed_data = ParseHelper.parse(data)
 
-    handler = HandlerHelper.new({sort: @options['sort'], reverse: @options['reverse']}.compact)
+    handler = HandlerHelper.new({ sort: @options['sort'], reverse: @options['reverse'] }.compact)
     processed_data = handler.process(parsed_data)
 
     converter = converter_factory(@options['output_format'], processed_data).new(id: '333333', link: 'new_link')
@@ -23,10 +23,10 @@ class App
   end
 
   def reader_factory(source)
-    @readers.find {|reader| reader.can_work?(source)}
+    @readers.find { |reader| reader.can_work?(source) }
   end
 
-  def converter_factory(output_format, source)
+  def converter_factory(output_format)
     converter_class = Converter.constants.find { |converter| Converter.const_get(converter).can_convert?(output_format) }
     Converter.const_get(converter_class)
   end

@@ -9,7 +9,7 @@ module Converter
     end
 
     def self.can_convert?(output_format)
-      "#{output_format.capitalize}Converter" == 'RssConverter' 
+      "#{output_format.capitalize}Converter" == 'RssConverter'
     end
 
     def convert(hash)
