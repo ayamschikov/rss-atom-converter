@@ -13,16 +13,19 @@ class App
 
     parsed_data = ParseHelper.parse(data)
 
-    handler = HandlerHelper.new(sort: @options['sort'], reverse: @options['reverse'])
+    handler = HandlerHelper.new({sort: @options['sort'], reverse: @options['reverse']}.compact)
     processed_data = handler.process(parsed_data)
 
-    converter = Converter.new(output_format: @options['output_format'])
-    xml = converter.to_xml(processed_data)
+    xml = converter_factory(@options['output_format'], processed_data)
 
     STDOUT.puts(xml)
   end
 
   def reader_factory(source)
     @readers.find {|reader| reader.can_work?(source)}
+  end
+
+  def converter_factory(output_format, source)
+    Object.const_get("Converter::#{output_format.capitalize}Converter").convert(source)
   end
 end
