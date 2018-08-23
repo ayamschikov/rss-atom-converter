@@ -1,13 +1,13 @@
 require 'rubygems'
-require 'factory_girl'
+require 'factory_bot'
 require 'bundler/setup'
 
 require 'coveralls'
 require 'minitest/autorun'
 
 Coveralls.wear!
-FactoryGirl.reload
+FactoryBot.reload
 
 class Minitest::Test
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
 end

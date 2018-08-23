@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.0'
 
 gem 'coveralls', require: false
-gem 'factory_girl'
+gem 'factory_bot'
 gem 'minitest'
 gem 'nokogiri', '~> 1.8', '>= 1.8.4'
 gem 'rack'
